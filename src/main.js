@@ -121,8 +121,9 @@ const mushroomTexture = new THREE.TextureLoader().load("./src/assets/mushroom.pn
 
 // ── Game State ────────────────────────────────────────────────────────────
 const STATES = { READY: "ready", PLAYING: "playing", ENDED: "ended", RESETTING: "resetting" };
-let gameState = STATES.READY;
-let blocks    = [];
+let gameState    = STATES.READY;
+let blocks       = [];
+let placingReady = true; // false briefly after each new block spawns, prevents edge-miss on fast double-tap
 
 // ── Mesh helpers ──────────────────────────────────────────────────────────
 
@@ -182,9 +183,14 @@ function addBlock() {
   blocks.push(b);
 
   smoothCamera(blocks.length * 2);
+
+  // Brief lock so a fast double-tap can't place the block while still at spawn edge
+  placingReady = false;
+  setTimeout(() => { placingReady = true; }, 350);
 }
 
 function placeBlock() {
+  if (!placingReady) return;
   const curr = blocks[blocks.length - 1];
   if (!curr?.active) return;
   curr.active = false;
