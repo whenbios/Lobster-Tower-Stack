@@ -25,6 +25,56 @@
       </div>
     </div>
 
-    <script type="module" src="./src/main.js"></script>
+    <script type="module">
+      const debugPost = (payload) =>
+        fetch("http://127.0.0.1:7646/ingest/5568e563-b342-4148-ac89-535528bcc2d6", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Debug-Session-Id": "1f05ac"
+          },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+
+      // #region agent log
+      debugPost({
+        sessionId: "1f05ac",
+        runId: "pre-fix",
+        hypothesisId: "H1",
+        location: "index.html:29",
+        message: "bootstrap module started",
+        data: { href: window.location.href, protocol: window.location.protocol },
+        timestamp: Date.now()
+      });
+      // #endregion
+
+      import("./src/main.js")
+        .then(() => {
+          // #region agent log
+          debugPost({
+            sessionId: "1f05ac",
+            runId: "pre-fix",
+            hypothesisId: "H1",
+            location: "index.html:43",
+            message: "main.js dynamic import success",
+            data: {},
+            timestamp: Date.now()
+          });
+          // #endregion
+        })
+        .catch((error) => {
+          // #region agent log
+          debugPost({
+            sessionId: "1f05ac",
+            runId: "pre-fix",
+            hypothesisId: "H1",
+            location: "index.html:55",
+            message: "main.js dynamic import failed",
+            data: { name: error?.name, message: String(error?.message || error) },
+            timestamp: Date.now()
+          });
+          // #endregion
+        });
+    </script>
   </body>
 </html>

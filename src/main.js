@@ -15,6 +15,31 @@ const MOVE_SPEED = 1.55;
 const DRIFT_LIMIT = 4.5;
 const ENABLE_EFFECTS = false;
 const BASE_SIZE = { x: 3, y: BLOCK_HEIGHT, z: 3 };
+const DEBUG_RUN_ID = "pre-fix";
+let didLogFirstFrame = false;
+
+function debugLog(hypothesisId, location, message, data = {}) {
+  fetch("http://127.0.0.1:7646/ingest/5568e563-b342-4148-ac89-535528bcc2d6", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Debug-Session-Id": "1f05ac"
+    },
+    body: JSON.stringify({
+      sessionId: "1f05ac",
+      runId: DEBUG_RUN_ID,
+      hypothesisId,
+      location,
+      message,
+      data,
+      timestamp: Date.now()
+    })
+  }).catch(() => {});
+}
+
+// #region agent log
+debugLog("H2", "src/main.js:38", "main module evaluated", {});
+// #endregion
 
 const canvas = document.getElementById("game-canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -22,6 +47,13 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+// #region agent log
+debugLog("H3", "src/main.js:52", "renderer initialized", {
+  hasCanvas: Boolean(canvas),
+  width: window.innerWidth,
+  height: window.innerHeight
+});
+// #endregion
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0x0d1016, 12, 26);
@@ -190,6 +222,13 @@ function resetGame() {
 
   addStaticBlock(BASE_SIZE, { x: 0, y: 0, z: 0 }, 0);
   buildMovingBlock();
+  // #region agent log
+  debugLog("H4", "src/main.js:222", "reset complete", {
+    blockCount: state.blocks.length,
+    hasMovingBlock: Boolean(state.movingBlock),
+    movingPos: state.movingBlock ? state.movingBlock.position : null
+  });
+  // #endregion
   refreshHud();
   hud.hideMessage();
 
@@ -199,6 +238,16 @@ function resetGame() {
 
 function animate() {
   const delta = Math.min(clock.getDelta(), 0.033);
+  if (!didLogFirstFrame) {
+    didLogFirstFrame = true;
+    // #region agent log
+    debugLog("H4", "src/main.js:236", "first animation frame", {
+      hasMovingBlock: Boolean(state.movingBlock),
+      axis: state.axis,
+      isGameOver: state.isGameOver
+    });
+    // #endregion
+  }
 
   if (!state.isGameOver && state.movingBlock) {
     state.moveTime += delta * MOVE_SPEED;
@@ -228,6 +277,12 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("pointerdown", () => {
+  // #region agent log
+  debugLog("H5", "src/main.js:271", "pointerdown received", {
+    isGameOver: state.isGameOver,
+    hasMovingBlock: Boolean(state.movingBlock)
+  });
+  // #endregion
   if (state.isGameOver) {
     resetGame();
     return;
@@ -254,4 +309,22 @@ window.addEventListener("beforeunload", () => {
   }
   lobsterTexture.dispose();
   renderer.dispose();
+});
+
+window.addEventListener("error", (event) => {
+  // #region agent log
+  debugLog("H2", "src/main.js:304", "window error", {
+    message: String(event.message || ""),
+    filename: String(event.filename || ""),
+    lineno: event.lineno ?? null
+  });
+  // #endregion
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  // #region agent log
+  debugLog("H2", "src/main.js:316", "unhandled rejection", {
+    reason: String(event.reason?.message || event.reason || "")
+  });
+  // #endregion
 });
