@@ -347,6 +347,14 @@ function endGame() {
     "Click or spacebar to start again",
   );
   window.parent.postMessage({ type: "SCORE", value: score }, "*");
+  // Server-side score submission via Cloudflare Worker
+  const playerId = window.playfunPlayerId || "anonymous";
+  fetch("https://silicon-lobster-score.zerowhose.workers.dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ playerId, score }),
+  }).catch(() => {});
+  // Also save via browser SDK as fallback
   playfunSDK.addPoints(score);
   playfunSDK.savePoints().catch(() => {});
 }
