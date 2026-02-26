@@ -276,7 +276,7 @@ function placeBlock() {
   const placedMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, placedW, curr.h, placedD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup, null, curr.customTopTex);
   placedMesh.position.set(curr.x, curr.y, curr.z);
 
-  const chopMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, chopW, curr.h, chopD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+  const chopMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, chopW, curr.h, chopD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup, null, curr.customTopTex);
   chopMesh.position.set(chopX, curr.y, chopZ);
 
   grpActive.remove(curr.mesh);
