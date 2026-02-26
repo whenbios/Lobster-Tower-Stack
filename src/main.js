@@ -119,6 +119,9 @@ const effects      = createEffects(THREE, scene);
 // ── Mushroom top texture for base platform ────────────────────────────────
 const mushroomTexture = new THREE.TextureLoader().load("./src/assets/mushroom.png");
 
+// ── Solana logo — always on block index 3 ─────────────────────────────────
+const solanaTexture = new THREE.TextureLoader().load("./src/assets/solana.png");
+
 // ── Game State ────────────────────────────────────────────────────────────
 const STATES = { READY: "ready", PLAYING: "playing", ENDED: "ended", RESETTING: "resetting" };
 let gameState    = STATES.READY;
@@ -162,11 +165,12 @@ function createBlock(prev) {
   // Both +X and +Z are always camera-visible, giving maximum port variety
   const PORT_FACES = [0, 4, 1, 5];
   const portFaceGroup = tierIdx === null ? null : PORT_FACES[index % 4];
+  const customTopTex  = index === 3 ? solanaTexture : null;
 
-  const mesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, w, BLOCK_H, d, tierIdx, tierTextures, portTexture, portFaceGroup);
+  const mesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, w, BLOCK_H, d, tierIdx, tierTextures, portTexture, portFaceGroup, null, customTopTex);
   mesh.position.set(x, y, z);
 
-  return { index, plane, dimKey, w, h: BLOCK_H, d, x, y, z, tierIdx, portFaceGroup, speed, direction, active: index > 0, missed: false, mesh };
+  return { index, plane, dimKey, w, h: BLOCK_H, d, x, y, z, tierIdx, portFaceGroup, customTopTex, speed, direction, active: index > 0, missed: false, mesh };
 }
 
 // ── Core mechanics ────────────────────────────────────────────────────────
@@ -213,7 +217,7 @@ function placeBlock() {
     grpActive.remove(curr.mesh);
     disposeMesh(curr.mesh);
 
-    const snapMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, curr.w, curr.h, curr.d, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+    const snapMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, curr.w, curr.h, curr.d, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup, null, curr.customTopTex);
     snapMesh.position.set(curr.x, curr.y, curr.z);
     grpPlaced.add(snapMesh);
     curr.mesh = snapMesh;
@@ -269,7 +273,7 @@ function placeBlock() {
   curr.w = placedW;
   curr.d = placedD;
 
-  const placedMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, placedW, curr.h, placedD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+  const placedMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, placedW, curr.h, placedD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup, null, curr.customTopTex);
   placedMesh.position.set(curr.x, curr.y, curr.z);
 
   const chopMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, chopW, curr.h, chopD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
@@ -425,4 +429,5 @@ window.addEventListener("beforeunload", () => {
   disposeTierTextures(tierTextures);
   portTexture.dispose();
   mushroomTexture.dispose();
+  solanaTexture.dispose();
 });

@@ -176,7 +176,7 @@ export function makePortTexture(THREE) {
  *
  * @param {number|null} portFaceGroup  RoundedBoxGeometry group index to put ports on
  */
-export function makeMacMiniBlock(THREE, RoundedBoxGeometry, w, h, d, tierIndex, textures, portTexture, portFaceGroup = null, baseTopTexture = null) {
+export function makeMacMiniBlock(THREE, RoundedBoxGeometry, w, h, d, tierIndex, textures, portTexture, portFaceGroup = null, baseTopTexture = null, topOverride = null) {
   // Mac Mini has ~28% height-radius → very visible rounding on the short edges
   // Clamp so tiny chopped blocks don't over-round
   const radius = Math.min(h * 0.40, Math.min(w, d) * 0.06, 0.55);
@@ -216,7 +216,7 @@ export function makeMacMiniBlock(THREE, RoundedBoxGeometry, w, h, d, tierIndex, 
     color: 0xffffff,
     metalness: 0.22,
     roughness: 0.52,
-    map: textures[tierIndex],
+    map: topOverride ?? textures[tierIndex],
   });
 
   // RoundedBoxGeometry groups: +X(0), -X(1), +Y-top(2), -Y-bot(3), +Z(4), -Z(5)
