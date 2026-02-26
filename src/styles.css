@@ -35,7 +35,7 @@ body {
 /* ── Centered score display ─────────────────────────────────────────────── */
 #score-display {
   position: absolute;
-  top: clamp(70px, 10vh, 100px);
+  top: 95px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;           /* floats above overlay */
