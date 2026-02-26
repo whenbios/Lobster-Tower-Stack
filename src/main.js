@@ -122,6 +122,9 @@ const mushroomTexture = new THREE.TextureLoader().load("./src/assets/mushroom.pn
 // ── Solana logo — always on block index 3 ─────────────────────────────────
 const solanaTexture = new THREE.TextureLoader().load("./src/assets/solana.png");
 
+// ── Cat — always on block index 6 ─────────────────────────────────────────
+const catTexture = new THREE.TextureLoader().load("./src/assets/cat.png");
+
 // ── Game State ────────────────────────────────────────────────────────────
 const STATES = { READY: "ready", PLAYING: "playing", ENDED: "ended", RESETTING: "resetting" };
 let gameState    = STATES.READY;
@@ -165,7 +168,9 @@ function createBlock(prev) {
   // Both +X and +Z are always camera-visible, giving maximum port variety
   const PORT_FACES = [0, 4, 1, 5];
   const portFaceGroup = tierIdx === null ? null : PORT_FACES[index % 4];
-  const customTopTex  = index === 3 ? solanaTexture : null;
+  const customTopTex  = index === 3 ? solanaTexture
+                      : index === 6 ? catTexture
+                      : null;
 
   const mesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, w, BLOCK_H, d, tierIdx, tierTextures, portTexture, portFaceGroup, null, customTopTex);
   mesh.position.set(x, y, z);
@@ -430,4 +435,5 @@ window.addEventListener("beforeunload", () => {
   portTexture.dispose();
   mushroomTexture.dispose();
   solanaTexture.dispose();
+  catTexture.dispose();
 });
