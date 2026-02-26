@@ -348,7 +348,7 @@ function endGame() {
   );
   window.parent.postMessage({ type: "SCORE", value: score }, "*");
   // Server-side score submission via Cloudflare Worker
-  const playerId = window.playfunPlayerId || "anonymous";
+  const playerId = PLAYER_ID;
   fetch("https://silicon-lobster-score.zerowhose.workers.dev", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -434,6 +434,12 @@ function initBase() {
     speed: 0, direction: 0, active: false, missed: false, mesh,
   });
 }
+
+// ── Player identity (persistent UUID stored in localStorage) ───────────────
+if (!localStorage.getItem("playfun_player_id")) {
+  localStorage.setItem("playfun_player_id", crypto.randomUUID());
+}
+const PLAYER_ID = localStorage.getItem("playfun_player_id");
 
 // ── Play.fun SDK ───────────────────────────────────────────────────────────
 const playfunSDK = new OpenGameSDK({
