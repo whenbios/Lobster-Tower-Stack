@@ -330,6 +330,7 @@ function startGame() {
   if (gameState === STATES.PLAYING) return;
   gameState = STATES.PLAYING;
   hud.setGold(0);
+  hud.showScore();
   hud.hideMessage();
   playRandomTrack();
   addBlock();
@@ -338,6 +339,7 @@ function startGame() {
 function endGame() {
   gameState = STATES.ENDED;
   stopMusic();
+  hud.hideScore();
   const score = Math.max(0, blocks.length - 2);
   hud.showMessage(
     "Game Over",

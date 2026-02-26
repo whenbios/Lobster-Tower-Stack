@@ -1,8 +1,12 @@
 export function createHud() {
-  const scoreNumEl = document.getElementById("score-num");
-  const overlayEl  = document.getElementById("overlay");
+  const scoreNumEl    = document.getElementById("score-num");
+  const scoreDisplay  = document.getElementById("score-display");
+  const overlayEl     = document.getElementById("overlay");
 
   let currentScore = null;
+
+  // Hidden by default — only visible during active play
+  scoreDisplay.style.visibility = "hidden";
 
   function setGold(value) {
     if (value === currentScore) return;
@@ -33,5 +37,13 @@ export function createHud() {
     overlayEl.classList.remove("visible");
   }
 
-  return { setGold, setHeight, showMessage, hideMessage };
+  function showScore() {
+    scoreDisplay.style.visibility = "visible";
+  }
+
+  function hideScore() {
+    scoreDisplay.style.visibility = "hidden";
+  }
+
+  return { setGold, setHeight, showMessage, hideMessage, showScore, hideScore };
 }
