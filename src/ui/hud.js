@@ -1,27 +1,31 @@
 export function createHud() {
-  const goldEl = document.getElementById("gold");
-  const heightEl = document.getElementById("height");
-  const overlayEl = document.getElementById("overlay");
+  const scoreNumEl = document.getElementById("score-num");
+  const overlayEl  = document.getElementById("overlay");
 
-  const state = {
-    gold: null,
-    height: null
-  };
+  let currentScore = null;
 
   function setGold(value) {
-    if (value === state.gold) return;
-    state.gold = value;
-    goldEl.textContent = String(value);
+    if (value === currentScore) return;
+    currentScore = value;
+    scoreNumEl.textContent = String(value);
+
+    // Quick scale-bounce feedback on every point scored
+    scoreNumEl.style.transform = "scale(1.22)";
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scoreNumEl.style.transform = "scale(1)";
+      });
+    });
   }
 
-  function setHeight(value) {
-    if (value === state.height) return;
-    state.height = value;
-    heightEl.textContent = String(value);
-  }
+  // Height is no longer displayed separately; keep API compat for main.js
+  function setHeight() {}
 
-  function showMessage(title, subtitle) {
-    overlayEl.innerHTML = `<h1>${title}</h1><p>${subtitle}</p>`;
+  function showMessage(title, subtitle, action) {
+    let html = `<h1>${title}</h1>`;
+    if (subtitle) html += `<p>${subtitle}</p>`;
+    if (action)   html += `<p class="action">${action}</p>`;
+    overlayEl.innerHTML = html;
     overlayEl.classList.add("visible");
   }
 
@@ -29,10 +33,5 @@ export function createHud() {
     overlayEl.classList.remove("visible");
   }
 
-  return {
-    setGold,
-    setHeight,
-    showMessage,
-    hideMessage
-  };
+  return { setGold, setHeight, showMessage, hideMessage };
 }

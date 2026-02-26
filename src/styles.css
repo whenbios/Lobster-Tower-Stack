@@ -1,8 +1,5 @@
 :root {
   color-scheme: dark;
-  --bg: #0f1115;
-  --panel: rgba(22, 24, 30, 0.66);
-  --border: rgba(255, 255, 255, 0.14);
   --text: #e9edf2;
   --muted: #9ba3ad;
 }
@@ -34,59 +31,102 @@ body {
   height: 100%;
 }
 
-#hud {
+/* ── Centered score display ─────────────────────────────────────────────── */
+#score-display {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 3;
-  display: flex;
-  gap: 10px;
+  top: clamp(14px, 3.5vh, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;           /* floats above overlay */
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
 }
 
-.hud-pill {
-  padding: 9px 13px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: var(--panel);
-  backdrop-filter: blur(6px);
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-weight: 600;
-  letter-spacing: 0.2px;
+#score-num {
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  /* Dark, readable against the warm-gray canvas */
+  color: rgba(28, 26, 38, 0.80);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.12s ease;
 }
 
-.label {
-  color: var(--muted);
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-}
-
+/* ── Overlay (start / game-over screens) ────────────────────────────────── */
 #overlay {
   position: absolute;
   inset: 0;
   display: none;
   z-index: 4;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: clamp(110px, 24vh, 200px);
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, rgba(6, 7, 10, 0.12), rgba(6, 7, 10, 0.42));
+  gap: 10px;
+  /* Light semi-transparent veil — lets canvas show through */
+  background: linear-gradient(
+    to bottom,
+    rgba(200, 196, 192, 0.08) 0%,
+    rgba(200, 196, 192, 0.38) 50%,
+    rgba(200, 196, 192, 0.10) 100%
+  );
 }
 
 #overlay.visible {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 #overlay h1 {
   margin: 0;
-  font-weight: 700;
-  font-size: clamp(1.2rem, 2.8vw, 2rem);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  color: rgba(28, 26, 38, 0.88);
+  letter-spacing: -0.01em;
 }
 
 #overlay p {
   margin: 0;
-  color: var(--muted);
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  color: rgba(40, 38, 54, 0.60);
+}
+
+#overlay .action {
+  margin-top: 8px;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  color: rgba(40, 38, 54, 0.45);
+}
+
+/* ── Audio mute button ──────────────────────────────────────────────────── */
+#audio-btn {
+  position: absolute;
+  bottom: clamp(14px, 3vh, 28px);
+  right: clamp(14px, 3vw, 28px);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(28, 26, 38, 0.55);
+  backdrop-filter: blur(6px);
+  color: rgba(233, 237, 242, 0.80);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s, transform 0.12s;
+}
+
+#audio-btn:hover {
+  background: rgba(28, 26, 38, 0.80);
+  transform: scale(1.08);
+}
+
+#audio-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }

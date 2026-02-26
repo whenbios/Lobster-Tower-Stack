@@ -1,0 +1,257 @@
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":0,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133319417,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":0},"timestamp":1772133319419,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":1},"timestamp":1772133319420,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":2},"timestamp":1772133319421,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":3},"timestamp":1772133319422,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":4},"timestamp":1772133319423,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":5,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133320381,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":5},"timestamp":1772133320382,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":6},"timestamp":1772133320383,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":7},"timestamp":1772133320383,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":8},"timestamp":1772133320384,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":9},"timestamp":1772133320385,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":4,"poolSizeBefore":0,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133383653,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":0},"timestamp":1772133383653,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":1},"timestamp":1772133383654,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":280,"vx":1.32,"vz":-7.55,"speed":7.66},"timestamp":1772133383654,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":249,"vx":-2.45,"vz":-6.47,"speed":6.92},"timestamp":1772133383653,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":102,"vx":-1.56,"vz":7.12,"speed":7.29},"timestamp":1772133383654,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":2},"timestamp":1772133383654,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":3},"timestamp":1772133383655,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":55,"vx":3.24,"vz":4.7,"speed":5.71},"timestamp":1772133383655,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133385408,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":207,"vx":-5.52,"vz":-2.84,"speed":6.21},"timestamp":1772133385408,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133385409,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133385408,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":59,"vx":2.39,"vz":4.01,"speed":4.66},"timestamp":1772133385409,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133385409,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":284,"vx":1.65,"vz":-6.68,"speed":6.88},"timestamp":1772133385410,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":7},"timestamp":1772133385410,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":254,"vx":-2.03,"vz":-7.03,"speed":7.31},"timestamp":1772133385410,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":8},"timestamp":1772133385410,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":4,"flyAngleDeg":340,"vx":4.56,"vz":-1.65,"speed":4.85},"timestamp":1772133385410,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":9,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133387149,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":9},"timestamp":1772133387150,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":5,"vx":7,"vz":0.56,"speed":7.02},"timestamp":1772133387151,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":9},"timestamp":1772133387151,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":150,"vx":-5.25,"vz":3,"speed":6.05},"timestamp":1772133387151,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133387152,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":312,"vx":4.67,"vz":-5.22,"speed":7.01},"timestamp":1772133387152,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":9},"timestamp":1772133387153,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":156,"vx":-6.78,"vz":2.95,"speed":7.4},"timestamp":1772133387153,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":9},"timestamp":1772133387153,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":4,"flyAngleDeg":358,"vx":4.74,"vz":-0.18,"speed":4.75},"timestamp":1772133387154,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-8.02,"targetZ":33.97},"timestamp":1772133387733,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":12.49,"targetZ":25.06},"timestamp":1772133388034,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":4.04,"targetZ":-27.97},"timestamp":1772133388075,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-12.65,"targetZ":-23.51},"timestamp":1772133388100,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133388876,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":10,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133388872,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":312,"vx":3.58,"vz":-3.93,"speed":5.32},"timestamp":1772133388877,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":9},"timestamp":1772133388873,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":9},"timestamp":1772133388874,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":174,"vx":-7.63,"vz":0.75,"speed":7.67},"timestamp":1772133388873,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":158,"vx":-7.02,"vz":2.88,"speed":7.59},"timestamp":1772133388876,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":12.59,"targetZ":14.24},"timestamp":1772133389301,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":-3.68,"targetZ":-30.11},"timestamp":1772133389466,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-19.74,"targetZ":-13.29},"timestamp":1772133389600,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":4,"targetX":22.97,"targetZ":-8.03},"timestamp":1772133389658,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":9.91,"targetZ":-30.67},"timestamp":1772133389792,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":8,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133390672,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":276,"vx":0.79,"vz":-7.21,"speed":7.25},"timestamp":1772133390674,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":8},"timestamp":1772133390673,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":9},"timestamp":1772133390674,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133390675,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":130,"vx":-2.94,"vz":3.51,"speed":4.58},"timestamp":1772133390675,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":92,"vx":-0.17,"vz":4.58,"speed":4.58},"timestamp":1772133390675,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":-18.36,"targetZ":15.49},"timestamp":1772133391017,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-12.45,"targetZ":14.63},"timestamp":1772133391066,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":35.8,"targetZ":5.32},"timestamp":1772133391267,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":4,"targetX":27.15,"targetZ":2.31},"timestamp":1772133391391,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":28.59,"targetZ":-19.52},"timestamp":1772133391625,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":6,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133392399,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":6},"timestamp":1772133392400,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":14,"vx":4.87,"vz":1.18,"speed":5.02},"timestamp":1772133392401,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-25.54,"targetZ":10.9},"timestamp":1772133392667,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":18.11,"targetZ":-7.22},"timestamp":1772133392742,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-23.99,"targetZ":19.48},"timestamp":1772133392875,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133393962,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133393963,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":309,"vx":4.48,"vz":-5.6,"speed":7.18},"timestamp":1772133393963,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133393963,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133393964,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":166,"vx":-6.81,"vz":1.66,"speed":7},"timestamp":1772133393964,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":233,"vx":-3.92,"vz":-5.17,"speed":6.49},"timestamp":1772133393965,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":43,"vx":4.21,"vz":3.98,"speed":5.79},"timestamp":1772133393966,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":8},"timestamp":1772133393966,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":7},"timestamp":1772133393965,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":4,"flyAngleDeg":240,"vx":-3.82,"vz":-6.55,"speed":7.59},"timestamp":1772133393967,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-10.48,"targetZ":19.62},"timestamp":1772133394783,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":5.57,"targetZ":-26.83},"timestamp":1772133394933,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":0.19,"targetZ":24.47},"timestamp":1772133395133,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":6,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133395637,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":30,"vx":5.47,"vz":3.17,"speed":6.32},"timestamp":1772133395637,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":6},"timestamp":1772133395637,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":7},"timestamp":1772133395637,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":8},"timestamp":1772133395638,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":81,"vx":0.96,"vz":6.19,"speed":6.27},"timestamp":1772133395638,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":51,"vx":3.09,"vz":3.77,"speed":4.88},"timestamp":1772133395638,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":22.05,"targetZ":9.41},"timestamp":1772133396191,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":8,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133397294,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":3,"vx":5.61,"vz":0.29,"speed":5.62},"timestamp":1772133397295,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":8},"timestamp":1772133397294,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-20.67,"targetZ":11.51},"timestamp":1772133397984,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":24.8,"targetZ":20.47},"timestamp":1772133398075,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":4,"targetX":-9.64,"targetZ":-25.17},"timestamp":1772133398333,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":26.28,"targetZ":-20.62},"timestamp":1772133398383,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-11.06,"targetZ":-18.76},"timestamp":1772133398417,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":4,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133398907,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":116,"vx":-3.31,"vz":6.91,"speed":7.66},"timestamp":1772133398908,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133398907,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133398908,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":224,"vx":-4.44,"vz":-4.31,"speed":6.19},"timestamp":1772133398908,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133398908,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":31,"vx":5.62,"vz":3.43,"speed":6.58},"timestamp":1772133398909,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":7},"timestamp":1772133398909,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":59,"vx":3.33,"vz":5.55,"speed":6.47},"timestamp":1772133398909,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":7.2,"targetZ":24.94},"timestamp":1772133399766,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":27.62,"targetZ":13.69},"timestamp":1772133399833,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":17.64,"targetZ":15.85},"timestamp":1772133400083,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":5,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133400477,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":5},"timestamp":1772133400478,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":293,"vx":2.65,"vz":-6.35,"speed":6.88},"timestamp":1772133400478,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":29.9,"targetZ":4.22},"timestamp":1772133401849,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-8.94,"targetZ":32.41},"timestamp":1772133402891,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133402964,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133402965,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":83,"vx":0.64,"vz":4.87,"speed":4.91},"timestamp":1772133402966,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133402966,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":188,"vx":-6.51,"vz":-0.94,"speed":6.57},"timestamp":1772133402966,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133402966,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":206,"vx":-6.71,"vz":-3.21,"speed":7.43},"timestamp":1772133402967,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":17.1,"targetZ":28.39},"timestamp":1772133403050,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-14.91,"targetZ":-13.24},"timestamp":1772133403274,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":29.89,"targetZ":20.38},"timestamp":1772133403450,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133404288,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":51,"vx":3.03,"vz":3.73,"speed":4.81},"timestamp":1772133404289,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133404288,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":15.2,"targetZ":-23.5},"timestamp":1772133404716,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":4,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133405787,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133405787,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":354,"vx":5.62,"vz":-0.59,"speed":5.66},"timestamp":1772133405788,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":345,"vx":4.38,"vz":-1.2,"speed":4.54},"timestamp":1772133405788,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133405788,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133405789,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":345,"vx":6.34,"vz":-1.65,"speed":6.55},"timestamp":1772133405790,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":95,"vx":-0.41,"vz":4.56,"speed":4.57},"timestamp":1772133405792,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":7},"timestamp":1772133405791,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-21.43,"targetZ":-2.68},"timestamp":1772133406859,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":7,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133407235,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":7},"timestamp":1772133407236,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":100,"vx":-1.01,"vz":5.69,"speed":5.78},"timestamp":1772133407236,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":7.01,"targetZ":22.51},"timestamp":1772133407325,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-26.41,"targetZ":-13.56},"timestamp":1772133407409,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":6,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133408482,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":6},"timestamp":1772133408483,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":170,"vx":-5.85,"vz":1.01,"speed":5.94},"timestamp":1772133408484,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":17.56,"targetZ":19.33},"timestamp":1772133408766,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":6,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133409678,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":178,"vx":-6.53,"vz":0.27,"speed":6.53},"timestamp":1772133409679,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":6},"timestamp":1772133409678,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":1.38,"targetZ":24.1},"timestamp":1772133410008,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":31.86,"targetZ":-1.63},"timestamp":1772133410058,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":28.27,"targetZ":2.67},"timestamp":1772133410133,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":24.22,"targetZ":-0.85},"timestamp":1772133410350,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":3,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133411066,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":3},"timestamp":1772133411066,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":148,"vx":-6.48,"vz":4.01,"speed":7.62},"timestamp":1772133411067,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":4},"timestamp":1772133411067,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":162,"vx":-6.01,"vz":1.91,"speed":6.31},"timestamp":1772133411067,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":5},"timestamp":1772133411067,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":186,"vx":-6.16,"vz":-0.67,"speed":6.2},"timestamp":1772133411067,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-0.45,"targetZ":30.02},"timestamp":1772133411757,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":5,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133412223,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":5},"timestamp":1772133412224,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":302,"vx":3.56,"vz":-5.64,"speed":6.67},"timestamp":1772133412224,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-20.03,"targetZ":7.89},"timestamp":1772133412675,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-23.46,"targetZ":5.13},"timestamp":1772133414041,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-21.32,"targetZ":20.71},"timestamp":1772133421840,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-20.69,"targetZ":1.62},"timestamp":1772133422172,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-21.22,"targetZ":13.17},"timestamp":1772133423236,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":17.51,"targetZ":-18.68},"timestamp":1772133423890,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":0,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133426504,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":0},"timestamp":1772133426504,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":194,"vx":-6.78,"vz":-1.71,"speed":7},"timestamp":1772133426504,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":1,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133428461,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":80,"vx":1.35,"vz":7.73,"speed":7.85},"timestamp":1772133428462,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":1},"timestamp":1772133428462,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":2},"timestamp":1772133428462,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":196,"vx":-5.15,"vz":-1.52,"speed":5.37},"timestamp":1772133428462,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":131,"vx":-4.39,"vz":5.05,"speed":6.69},"timestamp":1772133428462,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":3},"timestamp":1772133428462,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":4,"poolSizeBefore":4,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133430341,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":4},"timestamp":1772133430342,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":305,"vx":3.12,"vz":-4.41,"speed":5.4},"timestamp":1772133430342,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":5},"timestamp":1772133430342,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":87,"vx":0.3,"vz":5.53,"speed":5.54},"timestamp":1772133430342,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":6},"timestamp":1772133430342,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":60,"vx":3.46,"vz":5.94,"speed":6.87},"timestamp":1772133430343,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":7},"timestamp":1772133430343,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":44,"vx":4.54,"vz":4.35,"speed":6.29},"timestamp":1772133430343,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-21.7,"targetZ":-1.45},"timestamp":1772133430440,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":7,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133432252,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":7},"timestamp":1772133432252,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":166,"vx":-6.12,"vz":1.55,"speed":6.31},"timestamp":1772133432252,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":8},"timestamp":1772133432252,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":82,"vx":0.74,"vz":4.98,"speed":5.03},"timestamp":1772133432252,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133432253,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":25,"vx":5.11,"vz":2.33,"speed":5.62},"timestamp":1772133432253,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":9},"timestamp":1772133432253,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":151,"vx":-6.76,"vz":3.79,"speed":7.75},"timestamp":1772133432253,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":9},"timestamp":1772133432253,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":4,"flyAngleDeg":153,"vx":-6.1,"vz":3.13,"speed":6.86},"timestamp":1772133432254,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":10.44,"targetZ":42.38},"timestamp":1772133432540,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-14.32,"targetZ":32.54},"timestamp":1772133432874,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-18.45,"targetZ":3.61},"timestamp":1772133433032,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":3,"poolSizeBefore":9,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133433967,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":140,"vx":-4.9,"vz":4.07,"speed":6.37},"timestamp":1772133433968,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":9},"timestamp":1772133433969,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":356,"vx":6.43,"vz":-0.49,"speed":6.45},"timestamp":1772133433969,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":9},"timestamp":1772133433968,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133433969,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":227,"vx":-4.38,"vz":-4.67,"speed":6.41},"timestamp":1772133433969,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":27.99,"targetZ":23.42},"timestamp":1772133434240,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":22.45,"targetZ":-12.28},"timestamp":1772133434332,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":11.26,"targetZ":28.65},"timestamp":1772133434557,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":9,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133434617,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":9},"timestamp":1772133434618,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":41,"vx":3.71,"vz":3.27,"speed":4.95},"timestamp":1772133434618,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":25.98,"targetZ":32.4},"timestamp":1772133434867,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":5,"poolSizeBefore":9,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133436252,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":9},"timestamp":1772133436253,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":354,"vx":7.26,"vz":-0.74,"speed":7.3},"timestamp":1772133436253,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":1,"poolSizeAfterPrune":9},"timestamp":1772133436253,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":1,"flyAngleDeg":148,"vx":-6.28,"vz":3.93,"speed":7.41},"timestamp":1772133436253,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":2,"poolSizeAfterPrune":9},"timestamp":1772133436254,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":2,"flyAngleDeg":302,"vx":3.05,"vz":-4.92,"speed":5.79},"timestamp":1772133436254,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":3,"poolSizeAfterPrune":9},"timestamp":1772133436254,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":3,"flyAngleDeg":347,"vx":4.43,"vz":-1.03,"speed":4.55},"timestamp":1772133436255,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":4,"poolSizeAfterPrune":9},"timestamp":1772133436256,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":4,"flyAngleDeg":135,"vx":-5.4,"vz":5.37,"speed":7.62},"timestamp":1772133436256,"hypothesisId":"C,E"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":27.28,"targetZ":20.86},"timestamp":1772133436499,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":-24.43,"targetZ":27.36},"timestamp":1772133436698,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-21.31,"targetZ":18.16},"timestamp":1772133436740,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":8.41,"targetZ":32.43},"timestamp":1772133436757,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":4,"targetX":-22.13,"targetZ":24.27},"timestamp":1772133436790,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":-18.54,"targetZ":21.88},"timestamp":1772133441620,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":-18.93,"targetZ":-14.3},"timestamp":1772133441957,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":28.46,"targetZ":3.74},"timestamp":1772133442073,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":20.4,"targetZ":19.41},"timestamp":1772133442558,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":3,"targetX":18.28,"targetZ":2.2},"timestamp":1772133443784,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":4,"targetX":-22.44,"targetZ":27.14},"timestamp":1772133443991,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":2,"targetX":13.49,"targetZ":-15.25},"timestamp":1772133444357,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":1,"targetX":-27.81,"targetZ":23.73},"timestamp":1772133444398,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:xzTween-complete","message":"XZ tween completed (not killed)","data":{"i":0,"targetX":33.69,"targetZ":2.72},"timestamp":1772133444487,"hypothesisId":"C"}
+{"sessionId":"64bedd","location":"effects.js:spawnLobsters-entry","message":"spawnLobsters called","data":{"count":1,"poolSizeBefore":0,"maxLobsters":10,"codeVersion":"random360-v2"},"timestamp":1772133445600,"hypothesisId":"A,B,D"}
+{"sessionId":"64bedd","location":"effects.js:pruneOldest-after","message":"after pruneOldest","data":{"i":0,"poolSizeAfterPrune":0},"timestamp":1772133445600,"hypothesisId":"B"}
+{"sessionId":"64bedd","location":"effects.js:flyAngle","message":"lobster fly vector","data":{"i":0,"flyAngleDeg":196,"vx":-7.64,"vz":-2.14,"speed":7.93},"timestamp":1772133445601,"hypothesisId":"C,E"}

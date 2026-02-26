@@ -5,76 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Silicon Lobster Stack</title>
     <link rel="stylesheet" href="./src/styles.css" />
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="app">
       <canvas id="game-canvas" aria-label="Silicon Lobster Stack"></canvas>
-      <div id="hud">
-        <div class="hud-pill">
-          <span class="label">Alchemical Gold</span>
-          <span id="gold">0</span>
-        </div>
-        <div class="hud-pill">
-          <span class="label">Height</span>
-          <span id="height">0</span>
-        </div>
+      <!-- Centered score — always on top, even over the overlay -->
+      <div id="score-display">
+        <div id="score-num">0</div>
       </div>
       <div id="overlay" class="visible">
         <h1>Silicon Lobster Stack</h1>
         <p>Click or press Space to place each block.</p>
       </div>
+      <!-- Audio toggle -->
+      <button id="audio-btn" aria-label="Mute"></button>
     </div>
 
-    <script type="module">
-      const debugPost = (payload) =>
-        fetch("http://127.0.0.1:7646/ingest/5568e563-b342-4148-ac89-535528bcc2d6", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Debug-Session-Id": "1f05ac"
-          },
-          body: JSON.stringify(payload)
-        }).catch(() => {});
-
-      // #region agent log
-      debugPost({
-        sessionId: "1f05ac",
-        runId: "pre-fix",
-        hypothesisId: "H1",
-        location: "index.html:29",
-        message: "bootstrap module started",
-        data: { href: window.location.href, protocol: window.location.protocol },
-        timestamp: Date.now()
-      });
-      // #endregion
-
-      import("./src/main.js")
-        .then(() => {
-          // #region agent log
-          debugPost({
-            sessionId: "1f05ac",
-            runId: "pre-fix",
-            hypothesisId: "H1",
-            location: "index.html:43",
-            message: "main.js dynamic import success",
-            data: {},
-            timestamp: Date.now()
-          });
-          // #endregion
-        })
-        .catch((error) => {
-          // #region agent log
-          debugPost({
-            sessionId: "1f05ac",
-            runId: "pre-fix",
-            hypothesisId: "H1",
-            location: "index.html:55",
-            message: "main.js dynamic import failed",
-            data: { name: error?.name, message: String(error?.message || error) },
-            timestamp: Date.now()
-          });
-          // #endregion
-        });
-    </script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>

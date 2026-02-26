@@ -1,330 +1,422 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
-import { RoundedBoxGeometry } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/geometries/RoundedBoxGeometry.js";
+import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm";
 import { createHud } from "./ui/hud.js";
 import {
-  computePlacement,
-  createBlockFactory,
-  createLobsterTexture,
-  nextAxis
+  getTierIndex,
+  initTierTextures,
+  disposeTierTextures,
+  makeMacMiniBlock,
+  makePortTexture,
+  disposeMesh,
 } from "./game/stackLogic.js";
 import { createEffects } from "./game/effects.js";
 
-const BLOCK_HEIGHT = 0.7;
-const MOVE_RANGE = 3.8;
-const MOVE_SPEED = 1.55;
-const DRIFT_LIMIT = 4.5;
-const ENABLE_EFFECTS = false;
-const BASE_SIZE = { x: 3, y: BLOCK_HEIGHT, z: 3 };
-const DEBUG_RUN_ID = "pre-fix";
-let didLogFirstFrame = false;
+// ── Constants ──────────────────────────────────────────────────────────────
+const BLOCK_H    = 2.5;
+const MOVE_RANGE = 12;
+const BASE_SPEED = 0.15;
+const SNAP_DIST  = 0.5;
 
-function debugLog(hypothesisId, location, message, data = {}) {
-  fetch("http://127.0.0.1:7646/ingest/5568e563-b342-4148-ac89-535528bcc2d6", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Debug-Session-Id": "1f05ac"
-    },
-    body: JSON.stringify({
-      sessionId: "1f05ac",
-      runId: DEBUG_RUN_ID,
-      hypothesisId,
-      location,
-      message,
-      data,
-      timestamp: Date.now()
-    })
-  }).catch(() => {});
+// ── Audio ──────────────────────────────────────────────────────────────────
+const TRACKS = [
+  "./src/assets/audio/crab_audio-luxury-apartments-300581.mp3",
+  "./src/assets/audio/delosound-inspiring-motivation-synthwave-398285.mp3",
+  "./src/assets/audio/juliush-cool-jazz-loops-2641.mp3",
+  "./src/assets/audio/the_mountain-synthwave-138606.mp3",
+  "./src/assets/audio/vibehorn-cozy-lofi-relax-468509.mp3",
+];
+
+const SVG_ON  = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06A7 7 0 0 1 19 12a7 7 0 0 1-5 6.71v2.06A9 9 0 0 0 21 12 9 9 0 0 0 14 3.23z" fill="currentColor"/></svg>`;
+const SVG_OFF = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.36l2.45 2.45c.03-.26.05-.52.05-.78zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12a9 9 0 0 0-7-8.77v2.06A7 7 0 0 1 19 12zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18L19 19.27 20.27 18 5.27 3 4.27 3zM12 4 9.91 6.09 12 8.18V4z" fill="currentColor"/></svg>`;
+
+let audioEl   = null;
+let audioMuted = false;
+
+const audioBtn = document.getElementById("audio-btn");
+audioBtn.innerHTML = SVG_ON;
+
+function playRandomTrack() {
+  if (audioEl) { audioEl.pause(); audioEl.src = ""; }
+  const src = TRACKS[Math.floor(Math.random() * TRACKS.length)];
+  audioEl = new Audio(src);
+  audioEl.loop   = true;
+  audioEl.volume = 0.55;
+  audioEl.muted  = audioMuted;
+  audioEl.play().catch(() => {});
 }
 
-// #region agent log
-debugLog("H2", "src/main.js:38", "main module evaluated", {});
-// #endregion
+function stopMusic() {
+  if (audioEl) { audioEl.pause(); audioEl.currentTime = 0; }
+}
 
-const canvas = document.getElementById("game-canvas");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+function toggleMute() {
+  audioMuted = !audioMuted;
+  if (audioEl) audioEl.muted = audioMuted;
+  audioBtn.innerHTML  = audioMuted ? SVG_OFF : SVG_ON;
+  audioBtn.setAttribute("aria-label", audioMuted ? "Unmute" : "Mute");
+}
+
+audioBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleMute(); });
+
+// ── Renderer ──────────────────────────────────────────────────────────────
+const canvas   = document.getElementById("game-canvas");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-// #region agent log
-debugLog("H3", "src/main.js:52", "renderer initialized", {
-  hasCanvas: Boolean(canvas),
-  width: window.innerWidth,
-  height: window.innerHeight
-});
-// #endregion
+renderer.setClearColor("#C8C4C0", 1);
 
+// ── Scene ─────────────────────────────────────────────────────────────────
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x0d1016, 12, 26);
 
-const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 80);
-camera.position.set(6.4, 6.7, 6.4);
-camera.lookAt(0, 0.8, 0);
+// ── Orthographic Camera ────────────────────────────────────────────────────
+const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, -100, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
 
-const ambient = new THREE.AmbientLight(0xffffff, 0.44);
-scene.add(ambient);
+function resizeCamera() {
+  const vs = 30;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.left   = window.innerWidth  / -vs;
+  camera.right  = window.innerWidth  /  vs;
+  camera.top    = window.innerHeight /  vs;
+  camera.bottom = window.innerHeight / -vs;
+  camera.updateProjectionMatrix();
+}
+resizeCamera();
+window.addEventListener("resize", resizeCamera);
 
-const key = new THREE.DirectionalLight(0xe4ecff, 1.05);
-key.position.set(4.2, 9, 6);
-key.castShadow = true;
-key.shadow.mapSize.set(1024, 1024);
-scene.add(key);
+function smoothCamera(targetY, duration = 0.3) {
+  gsap.to(camera.position, { y: targetY + 4, duration, ease: "power1.inOut" });
+}
 
-const fill = new THREE.DirectionalLight(0xb8c8ff, 0.45);
-fill.position.set(-5, 5, -4);
-scene.add(fill);
+// ── Lights (PBR-friendly for metallic Mac Mini blocks) ─────────────────────
+scene.add(new THREE.AmbientLight(0xffffff, 0.50));
 
-const floor = new THREE.Mesh(
-  new THREE.CylinderGeometry(4.8, 5.8, 0.6, 36),
-  new THREE.MeshStandardMaterial({ color: 0x1b1f28, roughness: 0.8, metalness: 0.22 })
-);
-floor.position.y = -0.4;
-floor.receiveShadow = true;
-scene.add(floor);
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
+keyLight.position.set(6, 14, 6);
+scene.add(keyLight);
 
+const fillLight = new THREE.DirectionalLight(0xb8ccff, 0.38);
+fillLight.position.set(-6, 2, -6);
+scene.add(fillLight);
+
+scene.add(new THREE.HemisphereLight(0x99aabb, 0x3a2e28, 0.42));
+
+// ── Scene Groups ──────────────────────────────────────────────────────────
+const grpActive  = new THREE.Group();
+const grpPlaced  = new THREE.Group();
+const grpChopped = new THREE.Group();
+scene.add(grpActive, grpPlaced, grpChopped);
+
+// ── HUD ───────────────────────────────────────────────────────────────────
 const hud = createHud();
-const lobsterTexture = createLobsterTexture(THREE);
-const blockFactory = createBlockFactory(THREE, RoundedBoxGeometry, lobsterTexture);
-const effects = ENABLE_EFFECTS ? createEffects(THREE, scene) : null;
-const clock = new THREE.Clock();
 
-const state = {
-  axis: "x",
-  score: 0,
-  isGameOver: false,
-  moveTime: 0,
-  blocks: [],
-  movingBlock: null
-};
+// ── Tier textures, port texture & effects system ──────────────────────────
+const tierTextures = initTierTextures(THREE);
+const portTexture  = makePortTexture(THREE);
+const effects      = createEffects(THREE, scene);
 
-function disposeMesh(mesh) {
-  if (!mesh) return;
-  scene.remove(mesh);
-  if (mesh.geometry) mesh.geometry.dispose();
-  if (Array.isArray(mesh.material)) {
-    mesh.material.forEach((mat) => mat.dispose());
-  } else if (mesh.material) {
-    mesh.material.dispose();
+// ── Mushroom top texture for base platform ────────────────────────────────
+const mushroomTexture = new THREE.TextureLoader().load("./src/assets/mushroom.png");
+
+// ── Game State ────────────────────────────────────────────────────────────
+const STATES = { READY: "ready", PLAYING: "playing", ENDED: "ended", RESETTING: "resetting" };
+let gameState = STATES.READY;
+let blocks    = [];
+
+// ── Mesh helpers ──────────────────────────────────────────────────────────
+
+function clearGroup(grp) {
+  while (grp.children.length) {
+    const m = grp.children[0];
+    grp.remove(m);
+    disposeMesh(m);
   }
 }
 
-function clampXZ(position) {
-  return {
-    ...position,
-    x: THREE.MathUtils.clamp(position.x, -DRIFT_LIMIT, DRIFT_LIMIT),
-    z: THREE.MathUtils.clamp(position.z, -DRIFT_LIMIT, DRIFT_LIMIT)
-  };
+// ── Block factory ─────────────────────────────────────────────────────────
+
+function createBlock(prev) {
+  const index  = prev ? prev.index + 1 : 0;
+  const plane  = index % 2 ? "x" : "z";
+  const dimKey = index % 2 ? "w" : "d";
+
+  const w = prev ? prev.w : 10;
+  const d = prev ? prev.d : 10;
+  const y = BLOCK_H * index;
+
+  const px = prev ? prev.x : 0;
+  const pz = prev ? prev.z : 0;
+
+  const speed     = Math.min(BASE_SPEED + index * 0.005, 4);
+  const side      = Math.random() > 0.5 ? 1 : -1;
+  const spawnAbs  = side * MOVE_RANGE;
+  const direction = -side * speed;
+
+  const x = plane === "x" ? spawnAbs : px;
+  const z = plane === "z" ? spawnAbs : pz;
+
+  const tierIdx = getTierIndex(index);
+  // Alternate port face: +X(0), +Z(4), -X(1), -Z(5) cycling every block
+  // Both +X and +Z are always camera-visible, giving maximum port variety
+  const PORT_FACES = [0, 4, 1, 5];
+  const portFaceGroup = tierIdx === null ? null : PORT_FACES[index % 4];
+
+  const mesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, w, BLOCK_H, d, tierIdx, tierTextures, portTexture, portFaceGroup);
+  mesh.position.set(x, y, z);
+
+  return { index, plane, dimKey, w, h: BLOCK_H, d, x, y, z, tierIdx, portFaceGroup, speed, direction, active: index > 0, missed: false, mesh };
 }
 
-function updateCameraFocus(targetPosition, targetY) {
-  camera.position.x = targetPosition.x + 6.4;
-  camera.position.z = targetPosition.z + 6.4;
-  camera.position.y = Math.max(6.4, targetY + 6.4);
-  camera.lookAt(targetPosition.x, targetY - 0.4, targetPosition.z);
-}
+// ── Core mechanics ────────────────────────────────────────────────────────
 
-function addStaticBlock(size, position, level) {
-  const lockedPosition = clampXZ(position);
-  const mesh = blockFactory.createBlock(size, level);
-  mesh.position.set(lockedPosition.x, lockedPosition.y, lockedPosition.z);
-  scene.add(mesh);
-  const block = { mesh, size: { ...size }, position: { ...lockedPosition } };
-  state.blocks.push(block);
-  return block;
-}
+function addBlock() {
+  const last = blocks[blocks.length - 1];
+  if (last && last.missed) return endGame();
 
-function buildMovingBlock() {
-  const prev = state.blocks[state.blocks.length - 1];
-  const level = state.blocks.length;
-  const size = { ...prev.size, y: BLOCK_HEIGHT };
-  const basePosition = clampXZ({
-    x: prev.position.x,
-    z: prev.position.z
-  });
-  const spawn = {
-    x: basePosition.x,
-    y: prev.position.y + BLOCK_HEIGHT,
-    z: basePosition.z
-  };
-  spawn[state.axis] += MOVE_RANGE;
-  const axisMin = basePosition[state.axis] - MOVE_RANGE;
-  const axisMax = basePosition[state.axis] + MOVE_RANGE;
-  spawn[state.axis] = THREE.MathUtils.clamp(spawn[state.axis], axisMin, axisMax);
+  const score = Math.max(0, blocks.length - 1);
+  hud.setGold(score);
 
-  const mesh = blockFactory.createBlock(size, level);
-  mesh.position.set(spawn.x, spawn.y, spawn.z);
-  scene.add(mesh);
+  const b = createBlock(last ?? null);
+  grpActive.add(b.mesh);
+  blocks.push(b);
 
-  state.movingBlock = {
-    mesh,
-    size,
-    position: { ...spawn },
-    basePosition: { x: basePosition.x, z: basePosition.z }
-  };
-}
-
-function refreshHud() {
-  hud.setGold(state.score);
-  hud.setHeight(state.blocks.length - 1);
+  smoothCamera(blocks.length * 2);
 }
 
 function placeBlock() {
-  if (state.isGameOver || !state.movingBlock) return;
+  const curr = blocks[blocks.length - 1];
+  if (!curr?.active) return;
+  curr.active = false;
 
-  const prev = state.blocks[state.blocks.length - 1];
-  const moving = state.movingBlock;
-  const result = computePlacement(prev, moving, state.axis);
+  const prev = blocks[blocks.length - 2];
+  if (!prev) return;
 
-  if (result.isGameOver) {
-    state.isGameOver = true;
-    hud.showMessage("Game Over", `Alchemical Gold: ${state.score} | click to restart`);
-    window.parent.postMessage({ type: "SCORE", value: state.score }, "*");
+  const plane   = curr.plane;
+  const prevDim = plane === "x" ? prev.w : prev.d;
+  const currDim = plane === "x" ? curr.w : curr.d;
+  const overlap = prevDim - Math.abs(curr[plane] - prev[plane]);
+
+  // ── Perfect snap ──────────────────────────────────────────────────────
+  if (currDim - overlap < SNAP_DIST) {
+    curr.x = prev.x;
+    curr.z = prev.z;
+    curr.w = prev.w;
+    curr.d = prev.d;
+
+    grpActive.remove(curr.mesh);
+    disposeMesh(curr.mesh);
+
+    const snapMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, curr.w, curr.h, curr.d, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+    snapMesh.position.set(curr.x, curr.y, curr.z);
+    grpPlaced.add(snapMesh);
+    curr.mesh = snapMesh;
+
+    gsap.from(snapMesh.scale, { y: 1.35, duration: 0.18, ease: "bounce.out" });
+
+    // Celebratory lobster pops off in a random outward direction
+    const snapTop   = { x: curr.x + curr.w / 2, y: curr.y + BLOCK_H, z: curr.z + curr.d / 2 };
+    const snapAngle = Math.random() * Math.PI * 2;
+    effects.spawnLobsters(snapTop, { x: Math.cos(snapAngle), z: Math.sin(snapAngle) }, 1);
+
+    addBlock();
     return;
   }
 
-  disposeMesh(moving.mesh);
-  const placed = addStaticBlock(result.placed.size, result.placed.position, state.blocks.length);
-  state.score += 1;
-  refreshHud();
+  // ── Missed completely ─────────────────────────────────────────────────
+  if (overlap <= 0) {
+    curr.missed = true;
+    grpActive.remove(curr.mesh);
+    scene.add(curr.mesh);
 
-  if (ENABLE_EFFECTS && result.overhang) {
-    const overhangMesh = blockFactory.createBlock(result.overhang.size, state.blocks.length);
-    overhangMesh.position.set(result.overhang.position.x, result.overhang.position.y, result.overhang.position.z);
-    scene.add(overhangMesh);
-    effects.animateOverhangDrop(overhangMesh);
-    effects.spawnLobsterUmbrellas(
-      new THREE.Vector3(result.overhang.position.x, result.overhang.position.y, result.overhang.position.z),
-      7
-    );
-  }
-
-  state.axis = nextAxis(state.axis);
-  state.moveTime = 0;
-  state.movingBlock = null;
-
-  const focusY = placed.position.y - BLOCK_HEIGHT * 2;
-  updateCameraFocus(placed.position, focusY);
-
-  buildMovingBlock();
-}
-
-function resetGame() {
-  state.blocks.forEach((block) => disposeMesh(block.mesh));
-  state.blocks.length = 0;
-  disposeMesh(state.movingBlock?.mesh);
-  state.movingBlock = null;
-
-  state.axis = "x";
-  state.score = 0;
-  state.isGameOver = false;
-  state.moveTime = 0;
-
-  addStaticBlock(BASE_SIZE, { x: 0, y: 0, z: 0 }, 0);
-  buildMovingBlock();
-  // #region agent log
-  debugLog("H4", "src/main.js:222", "reset complete", {
-    blockCount: state.blocks.length,
-    hasMovingBlock: Boolean(state.movingBlock),
-    movingPos: state.movingBlock ? state.movingBlock.position : null
-  });
-  // #endregion
-  refreshHud();
-  hud.hideMessage();
-
-  camera.position.set(6.4, 6.7, 6.4);
-  camera.lookAt(0, 0.8, 0);
-}
-
-function animate() {
-  const delta = Math.min(clock.getDelta(), 0.033);
-  if (!didLogFirstFrame) {
-    didLogFirstFrame = true;
-    // #region agent log
-    debugLog("H4", "src/main.js:236", "first animation frame", {
-      hasMovingBlock: Boolean(state.movingBlock),
-      axis: state.axis,
-      isGameOver: state.isGameOver
+    gsap.to(curr.mesh.position, {
+      y: curr.y - 30,
+      [plane]: curr.mesh.position[plane] + (curr.direction > 0 ? 40 : -40),
+      duration: 1,
+      ease: "power1.in",
+      onComplete: () => {
+        scene.remove(curr.mesh);
+        disposeMesh(curr.mesh);
+      },
     });
-    // #endregion
+
+    addBlock(); // triggers endGame via missed flag
+    return;
   }
 
-  if (!state.isGameOver && state.movingBlock) {
-    state.moveTime += delta * MOVE_SPEED;
-    const offset = Math.sin(state.moveTime) * MOVE_RANGE;
-    const axis = state.axis;
-    const orthAxis = axis === "x" ? "z" : "x";
-    const axisMin = state.movingBlock.basePosition[axis] - MOVE_RANGE;
-    const axisMax = state.movingBlock.basePosition[axis] + MOVE_RANGE;
-    state.movingBlock.position[axis] = THREE.MathUtils.clamp(state.movingBlock.basePosition[axis] + offset, axisMin, axisMax);
-    state.movingBlock.position[orthAxis] = state.movingBlock.basePosition[orthAxis];
-    state.movingBlock.position = clampXZ(state.movingBlock.position);
-    state.movingBlock.mesh.position.set(
-      state.movingBlock.position.x,
-      state.movingBlock.position.y,
-      state.movingBlock.position.z
-    );
+  // ── Normal chop ───────────────────────────────────────────────────────
+  const placedW = plane === "x" ? overlap : curr.w;
+  const placedD = plane === "z" ? overlap : curr.d;
+  const chopW   = plane === "x" ? currDim - overlap : curr.w;
+  const chopD   = plane === "z" ? currDim - overlap : curr.d;
+
+  let chopX = curr.x;
+  let chopZ = curr.z;
+
+  if (curr[plane] < prev[plane]) {
+    curr[plane] = prev[plane];
+  } else {
+    if (plane === "x") chopX = curr.x + overlap;
+    else               chopZ = curr.z + overlap;
   }
 
-  renderer.render(scene, camera);
-  requestAnimationFrame(animate);
+  curr.w = placedW;
+  curr.d = placedD;
+
+  const placedMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, placedW, curr.h, placedD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+  placedMesh.position.set(curr.x, curr.y, curr.z);
+
+  const chopMesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, chopW, curr.h, chopD, curr.tierIdx, tierTextures, portTexture, curr.portFaceGroup);
+  chopMesh.position.set(chopX, curr.y, chopZ);
+
+  grpActive.remove(curr.mesh);
+  disposeMesh(curr.mesh);
+
+  grpPlaced.add(placedMesh);
+  grpChopped.add(chopMesh);
+  curr.mesh = placedMesh;
+
+  // Fly overhang piece away
+  const flyAmt  = chopMesh.position[plane] > placedMesh.position[plane] ? 40 : -40;
+  const rotAxis = plane === "z" ? "x" : "z";
+
+  // Lobsters fly out FROM the chop piece, in the same direction it's launched
+  const chopTop = { x: chopX + chopW / 2, y: curr.y + BLOCK_H, z: chopZ + chopD / 2 };
+  const flyDir  = {
+    x: plane === "x" ? (flyAmt > 0 ? 1 : -1) : 0,
+    z: plane === "z" ? (flyAmt > 0 ? 1 : -1) : 0,
+  };
+  effects.spawnLobsters(chopTop, flyDir, 3 + Math.floor(Math.random() * 3)); // 3–5
+
+  gsap.to(chopMesh.position, {
+    y: curr.y - 30,
+    [plane]: chopMesh.position[plane] + flyAmt,
+    duration: 1,
+    ease: "power1.in",
+    onComplete: () => {
+      grpChopped.remove(chopMesh);
+      disposeMesh(chopMesh);
+    },
+  });
+  gsap.to(chopMesh.rotation, {
+    [rotAxis]: (Math.random() * 10) - 5,
+    y: Math.random() * 0.2,
+    delay: 0.05,
+    duration: 1,
+    ease: "power1.in",
+  });
+
+  addBlock();
 }
 
-window.addEventListener("resize", () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
+// ── Game state transitions ────────────────────────────────────────────────
 
-window.addEventListener("pointerdown", () => {
-  // #region agent log
-  debugLog("H5", "src/main.js:271", "pointerdown received", {
-    isGameOver: state.isGameOver,
-    hasMovingBlock: Boolean(state.movingBlock)
+function startGame() {
+  if (gameState === STATES.PLAYING) return;
+  gameState = STATES.PLAYING;
+  hud.setGold(0);
+  hud.hideMessage();
+  playRandomTrack();
+  addBlock();
+}
+
+function endGame() {
+  gameState = STATES.ENDED;
+  stopMusic();
+  const score = Math.max(0, blocks.length - 2);
+  hud.showMessage(
+    "Game Over",
+    `Score: ${score}`,
+    "Click or spacebar to start again",
+  );
+  window.parent.postMessage({ type: "SCORE", value: score }, "*");
+}
+
+function restartGame() {
+  if (gameState === STATES.RESETTING) return;
+  gameState = STATES.RESETTING;
+
+  clearGroup(grpActive);
+  clearGroup(grpChopped);
+
+  const placed    = [...grpPlaced.children];
+  const shrinkDur = 0.2;
+  const delayStep = 0.02;
+
+  placed.forEach((mesh, i) => {
+    const delay = (placed.length - i) * delayStep;
+    gsap.to(mesh.scale, {
+      x: 0, y: 0, z: 0,
+      duration: shrinkDur, delay, ease: "power1.in",
+      onComplete: () => { grpPlaced.remove(mesh); disposeMesh(mesh); },
+    });
+    gsap.to(mesh.rotation, { y: 0.5, duration: shrinkDur, delay, ease: "power1.in" });
   });
-  // #endregion
-  if (state.isGameOver) {
-    resetGame();
-    return;
+
+  const totalDur = shrinkDur * 2 + placed.length * delayStep;
+  smoothCamera(2, totalDur);
+  blocks = [];
+
+  setTimeout(() => {
+    gameState = STATES.READY;
+    initBase();
+    startGame();
+  }, totalDur * 1000);
+}
+
+function onAction() {
+  switch (gameState) {
+    case STATES.READY:     startGame();   break;
+    case STATES.PLAYING:   placeBlock();  break;
+    case STATES.ENDED:     restartGame(); break;
   }
-  placeBlock();
+}
+
+// ── Input ─────────────────────────────────────────────────────────────────
+window.addEventListener("pointerdown", onAction);
+window.addEventListener("keydown", (e) => {
+  if (e.code === "Space") { e.preventDefault(); onAction(); }
 });
 
-window.addEventListener("keydown", (event) => {
-  if (event.code !== "Space") return;
-  event.preventDefault();
-  if (state.isGameOver) {
-    resetGame();
-    return;
+// ── Game loop ─────────────────────────────────────────────────────────────
+function tick() {
+  const curr = blocks[blocks.length - 1];
+  if (curr?.active) {
+    const val = curr[curr.plane];
+    if (val > MOVE_RANGE || val < -MOVE_RANGE) {
+      curr.direction = curr.direction > 0 ? -curr.speed : curr.speed;
+    }
+    curr[curr.plane] += curr.direction;
+    curr.mesh.position[curr.plane] = curr[curr.plane];
   }
-  placeBlock();
-});
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
 
-resetGame();
-animate();
+// ── Init ──────────────────────────────────────────────────────────────────
+
+function initBase() {
+  const mesh = makeMacMiniBlock(THREE, RoundedBoxGeometry, 10, BLOCK_H, 10, null, tierTextures, portTexture, null, mushroomTexture);
+  mesh.position.set(0, 0, 0);
+  grpPlaced.add(mesh);
+  blocks.push({
+    index: 0, plane: "z", dimKey: "d",
+    w: 10, h: BLOCK_H, d: 10,
+    x: 0, y: 0, z: 0,
+    tierIdx: null, portFaceGroup: null,
+    speed: 0, direction: 0, active: false, missed: false, mesh,
+  });
+}
+
+initBase();
+hud.showMessage("Silicon Lobster Stack", null, "Click or press Space to start");
+tick();
 
 window.addEventListener("beforeunload", () => {
-  if (ENABLE_EFFECTS) {
-    effects.dispose();
-  }
-  lobsterTexture.dispose();
+  stopMusic();
   renderer.dispose();
-});
-
-window.addEventListener("error", (event) => {
-  // #region agent log
-  debugLog("H2", "src/main.js:304", "window error", {
-    message: String(event.message || ""),
-    filename: String(event.filename || ""),
-    lineno: event.lineno ?? null
-  });
-  // #endregion
-});
-
-window.addEventListener("unhandledrejection", (event) => {
-  // #region agent log
-  debugLog("H2", "src/main.js:316", "unhandled rejection", {
-    reason: String(event.reason?.message || event.reason || "")
-  });
-  // #endregion
+  effects.dispose();
+  disposeTierTextures(tierTextures);
+  portTexture.dispose();
+  mushroomTexture.dispose();
 });
