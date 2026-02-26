@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silicon Lobster Stack</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas" aria-label="Silicon Lobster Stack"></canvas>
+      <div id="hud">
+        <div class="hud-pill">
+          <span class="label">Alchemical Gold</span>
+          <span id="gold">0</span>
+        </div>
+        <div class="hud-pill">
+          <span class="label">Height</span>
+          <span id="height">0</span>
+        </div>
+      </div>
+      <div id="overlay" class="visible">
+        <h1>Silicon Lobster Stack</h1>
+        <p>Click or press Space to place each block.</p>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

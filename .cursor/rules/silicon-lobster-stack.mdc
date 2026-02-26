@@ -1,0 +1,29 @@
+---
+description: Silicon Lobster Stack gameplay and style standards
+alwaysApply: true
+---
+
+# Silicon Lobster Stack Rules
+
+## Core Stack
+- Use Three.js and GSAP only; keep physics manual with axis-aligned overlap checks.
+- Alternate block motion axis each turn: `X`, then `Z`, then repeat.
+- On place input, compute overlap against previous block and chop overhang.
+- Trigger game over if overlap on the active axis is `<= 0`.
+
+## Scoring And Messaging
+- Track and surface both `Alchemical Gold` score and stack height.
+- On game over, always send:
+  - `window.parent.postMessage({ type: 'SCORE', value: score }, '*')`
+
+## Visual Direction
+- Keep a minimalist industrial look: metallic materials, soft rounding, clean UI.
+- Include lobster theming on block tops and chop effects.
+- Every 15 placed blocks, rotate material tier:
+  - Silver -> Space Gray -> Midnight -> Neon accent style.
+
+## Performance
+- Prioritize iframe-friendly runtime behavior.
+- Reuse geometry/material instances when practical.
+- Avoid per-frame allocations and cap transient effects.
+- Dispose temporary meshes, textures, and materials after use.
