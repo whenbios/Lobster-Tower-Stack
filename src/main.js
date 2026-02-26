@@ -347,6 +347,8 @@ function endGame() {
     "Click or spacebar to start again",
   );
   window.parent.postMessage({ type: "SCORE", value: score }, "*");
+  playfunSDK.addPoints(score);
+  playfunSDK.savePoints().catch(() => {});
 }
 
 function restartGame() {
@@ -424,6 +426,13 @@ function initBase() {
     speed: 0, direction: 0, active: false, missed: false, mesh,
   });
 }
+
+// ── Play.fun SDK ───────────────────────────────────────────────────────────
+const playfunSDK = new OpenGameSDK({
+  gameId: "f76cb221-2ca5-4325-995a-f3e649282ee3",
+  ui: { usePointsWidget: false },
+});
+playfunSDK.init().catch(() => {});
 
 initBase();
 hud.showMessage("Silicon Lobster Stack", null, "Click or press Space to start");
