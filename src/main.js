@@ -347,16 +347,8 @@ function endGame() {
     "Click or spacebar to start again",
   );
   window.parent.postMessage({ type: "SCORE", value: score }, "*");
-  // Server-side score submission via Cloudflare Worker
-  const playerId = PLAYER_ID;
-  fetch("https://silicon-lobster-score.zerowhose.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ playerId, score }),
-  }).catch(() => {});
-  // Also save via browser SDK as fallback
   playfunSDK.addPoints(score);
-  playfunSDK.savePoints().catch(() => {});
+  playfunSDK.endGame().catch(() => {});
 }
 
 function restartGame() {
@@ -444,7 +436,7 @@ const PLAYER_ID = localStorage.getItem("playfun_player_id");
 // ── Play.fun SDK ───────────────────────────────────────────────────────────
 const playfunSDK = new OpenGameSDK({
   gameId: "f76cb221-2ca5-4325-995a-f3e649282ee3",
-  ui: { usePointsWidget: false },
+  ui: { usePointsWidget: true },
 });
 playfunSDK.init().catch(() => {});
 
